@@ -1,69 +1,59 @@
 # Customer Retention Intelligence System
-### Project Overview
 
-The Customer Retention Intelligence System is an end-to-end machine learning project designed to predict whether a telecom customer is likely to churn.
+## Project Overview
 
-The system analyzes customer attributes such as tenure, service usage, and billing details to estimate the probability of churn and classify customers into risk categories.
+The **Customer Retention Intelligence System** is an end-to-end machine learning project designed to predict whether a telecom customer is likely to churn.
 
-## The project demonstrates a complete data science workflow including:
+The system analyzes customer attributes such as tenure, service usage, and billing information to estimate churn probability and classify customers into risk categories.
 
-### 1. Data preprocessing
+This project demonstrates a complete **data science workflow** including data preprocessing, machine learning model training, API development, and dashboard visualization.
 
-Machine learning model training
-
-Handling class imbalance
-
-Model API development
-
-Interactive prediction dashboard
+---
 
 ## Tech Stack
 
-Programming Language
+**Programming Language**
 
-Python
+- Python
 
-Libraries
+**Libraries**
 
-pandas
+- pandas
+- scikit-learn
+- matplotlib
+- imbalanced-learn
 
-scikit-learn
+**Frameworks**
 
-matplotlib
+- FastAPI
+- Streamlit
 
-imbalanced-learn
+**Machine Learning Model**
 
-Frameworks
+- Random Forest Classifier
 
-FastAPI
+---
 
-Streamlit
+## Dataset
 
-Machine Learning Model
+The project uses a telecom customer dataset containing customer demographics, services subscribed, billing information, and churn status.
 
-Random Forest
+**Target Variable**
 
-Dataset
+- `Churn = 1` → Customer leaves the company  
+- `Churn = 0` → Customer stays with the company  
 
-The project uses the telecom customer dataset containing customer demographics, service usage, and billing information.
+---
 
-Target Variable:
+## Project Structure
 
-Churn
-
-1 → Customer leaves the company
-
-0 → Customer stays with the company
-
-Project Structure
+```
 Customer Retention System
 │
 ├── Data
 │   └── Telco_CustChurn.csv
 │
 ├── Model
-│   ├── churn_model.pkl
-│   └── model_features.pkl
 │
 ├── Source
 │   ├── preprocess.py
@@ -74,139 +64,86 @@ Customer Retention System
 ├── app.py
 ├── requirements.txt
 └── README.md
-Folder Explanation
-Data
+```
 
-Contains the dataset used for training the machine learning model.
+---
 
-Telco_CustChurn.csv
+## System Architecture
 
-Telecom customer dataset used for churn prediction.
+User enters customer information through the dashboard.
 
-Model
+Streamlit sends the request to the FastAPI backend.
 
-Stores the trained machine learning model files.
+FastAPI processes the request and sends data to the trained machine learning model.
 
-churn_model.pkl
+The model predicts churn probability and returns the result to the dashboard.
 
-Trained Random Forest model used for predictions.
+---
 
-model_features.pkl
+## Machine Learning Workflow
 
-List of feature columns used during model training to maintain consistency during prediction.
+1. Load dataset
+2. Perform data preprocessing
+3. Split dataset into training and testing sets
+4. Handle class imbalance using SMOTE
+5. Train Random Forest model
+6. Save trained model
+7. Build API for prediction
+8. Create dashboard for user interaction
 
-Source
+---
 
-Contains the core machine learning logic.
+## Example Prediction Output
 
-preprocess.py
-
-Handles data cleaning and preprocessing
-
-Converts categorical values into numerical format
-
-Ensures the dataset is ready for model training
-
-train.py
-
-Loads dataset
-
-Applies preprocessing
-
-Handles class imbalance using SMOTE
-
-Trains the Random Forest model
-
-Saves the trained model and feature list
-
-predict.py
-
-Loads the trained model
-
-Accepts new customer data
-
-Performs preprocessing
-
-Returns churn probability and risk category
-
-api.py
-
-Implements the backend API using FastAPI.
-
-Responsibilities:
-
-Accepts input data from the dashboard
-
-Sends the data to the prediction pipeline
-
-Returns churn prediction results
-
-app.py
-
-Creates an interactive dashboard using Streamlit.
-
-Features:
-
-User input form for customer details
-
-Sends request to FastAPI backend
-
-Displays prediction results including:
-
-churn probability
-
-risk category
-
-Machine Learning Workflow
-
-Load dataset
-
-Data preprocessing
-
-Train-test split
-
-Handle class imbalance using SMOTE
-
-Train Random Forest model
-
-Save trained model
-
-Create API for predictions
-
-Build dashboard for user interaction
-
-Example Prediction Output
+```
 Churn Probability: 0.78
 Risk Category: High Risk
-How to Run the Project
-Install dependencies
+```
+
+---
+
+## How to Run the Project
+
+### 1 Install Dependencies
+
+```
 pip install -r requirements.txt
-Train the model
+```
+
+### 2 Train the Model
+
+```
 python Source/train.py
-Run FastAPI server
+```
+
+### 3 Run FastAPI Server
+
+```
 uvicorn api:app --reload
-Run Streamlit dashboard
+```
+
+### 4 Run Streamlit Dashboard
+
+```
 streamlit run app.py
-Business Impact
+```
+
+---
+
+## Business Impact
 
 This system helps companies:
 
-Identify customers likely to churn
+- Identify customers likely to churn
+- Take preventive retention actions
+- Improve customer lifetime value
+- Reduce revenue loss
 
-Take preventive retention actions
+---
 
-Improve customer lifetime value
+## Future Improvements
 
-Reduce revenue loss
-
-Author
-
-Pranay S Masurkar
-
-✅ This version is better because
-
-it matches your actual project folders
-
-recruiters can understand the architecture quickly
-
-it looks like a real production project
+- Deploy the system on cloud
+- Add real-time prediction API
+- Improve model performance using advanced algorithms
+- Add explainable AI (SHAP)
